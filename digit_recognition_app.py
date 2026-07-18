@@ -8,12 +8,11 @@ Original file is located at
 """
 
 import tensorflow as tf
-from tensorflow.keras.datasets import mnist
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten, Conv2D, MaxPooling2D
 from tensorflow.keras.utils import to_categorical
 
-(x_train , y_train), (x_test , y_test) = mnist.load_data()
 
 x_train = x_train.reshape(-1,28,28,1)/255.0
 x_test = x_test.reshape(-1,28,28,1)/255.0
@@ -30,7 +29,5 @@ model = Sequential([
 ])
 
 model.compile(optimizer='adam',loss='categorical_crossentropy',metrics=['accuracy'])
-model.fit(x_train,y_train,epochs=3,validation_data=(x_test,y_test))
 
-model.save("digit_model.keras")
 print("saved")
